@@ -1,2 +1,2 @@
-include ':app', ':lib-mvvm-kt', ':lib-http-kt'
-rootProject.name='SharKtMvvm'
+include ':app', ':lib-mvvm-kt', ':lib-http-kt', ':lib-api-kt'
+rootProject.name='SharKt'
