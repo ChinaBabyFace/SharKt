@@ -15,7 +15,6 @@ abstract class BaseMvvmActivity<T : BaseVm> : AppCompatActivity() {
         init()
         bind()
 
-
     }
 
     private fun initViewModel() {

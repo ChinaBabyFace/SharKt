@@ -29,22 +29,29 @@ import retrofit2.Retrofit
  * @version 2.0
  * @since 1.0
  */
-abstract class HttpManager(private var context: Context, private var baseUrl: String?) {
-    lateinit var retrofit: Retrofit
+abstract class HttpManager {
+    private lateinit var retrofit: Retrofit
+    private  var context: Context
+    private  var baseUrl: String
 
-    fun getHttpClientBuilder(): OkHttpClient.Builder {
+    constructor(context: Context, baseUrl: String) {
+        this.context = context
+        this.baseUrl = baseUrl
+        reset()
+    }
+
+    open fun getHttpClientBuilder(): OkHttpClient.Builder {
         return OkHttpClient().newBuilder().connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
             .cache(Cache(context.cacheDir, 10 * 1024 * 1024/*10MB*/))
     }
 
-    fun getRetrofitBuilder(client: OkHttpClient): Retrofit.Builder {
+    open fun getRetrofitBuilder(client: OkHttpClient): Retrofit.Builder {
         return Retrofit.Builder().client(client).baseUrl(baseUrl!!)
     }
 
     fun <S> createAPI(apiClass: Class<S>): S {
-        if (retrofit == null) reset()
         return retrofit.create(apiClass)
     }
 

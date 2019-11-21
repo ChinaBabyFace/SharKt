@@ -1,4 +1,4 @@
-package com.sharkt.mvvm.demo
+package com.sharkt.demo
 
 import com.sharkt.mvvm.BaseVm
 
