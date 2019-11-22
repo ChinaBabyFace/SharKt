@@ -28,7 +28,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api 'com.squareup.retrofit2:retrofit:2.6.2'
-    api 'com.squareup.retrofit2:converter-gson:2.3.0'
     api 'com.squareup.okhttp3:logging-interceptor:3.12.0'
     implementation project(path: ':lib-world-kt')
 
