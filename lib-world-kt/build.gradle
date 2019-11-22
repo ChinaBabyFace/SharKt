@@ -26,6 +26,15 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':lib-world-kt')
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_v"
+    api "androidx.appcompat:appcompat:$appcompat_v"
+    api "androidx.core:core-ktx:$core_ktx_v"
+    api "androidx.constraintlayout:constraintlayout:$constraintlayout_v"
+    api 'io.reactivex.rxjava2:rxjava:2.2.14'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    api 'com.uber.autodispose:autodispose-android-archcomponents:1.4.0'
+    testApi 'junit:junit:4.12'
+    androidTestApi 'androidx.test.ext:junit:1.1.1'
+    androidTestApi 'androidx.test.espresso:espresso-core:3.2.0'
 }

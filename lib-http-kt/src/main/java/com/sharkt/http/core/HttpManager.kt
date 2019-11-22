@@ -2,6 +2,7 @@ package com.sharkt.http.core
 
 
 import android.content.Context
+import android.util.Log
 
 import java.util.concurrent.TimeUnit
 
@@ -31,28 +32,38 @@ import retrofit2.Retrofit
  */
 abstract class HttpManager {
     private lateinit var retrofit: Retrofit
-    private  var context: Context
-    private  var baseUrl: String
+    private lateinit var context: Context
+    private lateinit var baseUrl: String
+
+    constructor()
 
     constructor(context: Context, baseUrl: String) {
         this.context = context
         this.baseUrl = baseUrl
-        reset()
     }
 
     open fun getHttpClientBuilder(): OkHttpClient.Builder {
-        return OkHttpClient().newBuilder().connectTimeout(10, TimeUnit.SECONDS)
+        Log.e("shark", "super getHttpClientBuilder")
+        return OkHttpClient()
+            .newBuilder()
+            .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
             .cache(Cache(context.cacheDir, 10 * 1024 * 1024/*10MB*/))
     }
 
     open fun getRetrofitBuilder(client: OkHttpClient): Retrofit.Builder {
-        return Retrofit.Builder().client(client).baseUrl(baseUrl!!)
+        return Retrofit.Builder().client(client).baseUrl(baseUrl)
     }
 
     fun <S> createAPI(apiClass: Class<S>): S {
         return retrofit.create(apiClass)
+    }
+
+    fun reset(context: Context, baseUrl: String){
+        this.context = context
+        this.baseUrl = baseUrl
+        reset()
     }
 
     fun reset() {

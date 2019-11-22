@@ -21,17 +21,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_v"
-    implementation "androidx.appcompat:appcompat:$appcompat_v"
-    implementation "androidx.core:core-ktx:$core_ktx_v"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_v"
+    implementation project(path: ':lib-world-kt')
     implementation project(path: ':lib-mvvm-kt')
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(path: ':lib-api-kt')
 }

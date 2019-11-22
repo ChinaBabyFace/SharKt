@@ -3,7 +3,7 @@ package com.sharkt.mvvm
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseMvvmActivity<T : BaseVm> : AppCompatActivity() {
@@ -20,7 +20,7 @@ abstract class BaseMvvmActivity<T : BaseVm> : AppCompatActivity() {
     private fun initViewModel() {
         val classT =
             (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<T>
-        vm = ViewModelProviders.of(this).get(classT)
+        vm = ViewModelProvider(this.viewModelStore, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(classT)
         vm.create()
     }
 

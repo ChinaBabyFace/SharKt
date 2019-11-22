@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/lib-api-kt" />
             <option value="$PROJECT_DIR$/lib-http-kt" />
             <option value="$PROJECT_DIR$/lib-mvvm-kt" />
+            <option value="$PROJECT_DIR$/lib-world-kt" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
