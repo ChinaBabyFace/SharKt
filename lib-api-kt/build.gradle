@@ -5,7 +5,6 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
-
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 29
@@ -16,17 +15,21 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
-        debug{
-            buildConfigField("String","BASE_URL","\"https://api.github.com\"")
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://api.github.com\"")
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String","BASE_URL","\"https://api.github.com\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.github.com\"")
         }
     }
-
 }
 
 dependencies {

@@ -5,9 +5,9 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET("/orgs/octokit/repos")
-    fun getOctokitRepos(): Observable<BaseDo>
+    fun getOctokitRepos(): Observable<BaseDo<Any>>
 
     @GET("/emojis")
-    fun getEmojis():Observable<BaseDo>
+    fun getEmojis():Observable<BaseDo<Any>>
 
 }
