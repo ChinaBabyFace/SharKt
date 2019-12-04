@@ -20,7 +20,7 @@ abstract class BaseMvvmActivity<T : BaseVm> : AppCompatActivity() {
     private fun initViewModel() {
         val classT =
             (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<T>
-        vm = ViewModelProvider(this.viewModelStore, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(classT)
+        vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(classT)
         vm.create()
     }
 
