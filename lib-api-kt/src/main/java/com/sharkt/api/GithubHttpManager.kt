@@ -46,7 +46,9 @@ class GithubHttpManager : HttpManager {
         .connectTimeout(60, TimeUnit.SECONDS)
         .also {
             if (BuildConfig.DEBUG)
-                it.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                it.addInterceptor(HttpLoggingInterceptor().apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                })
         }
 
 
