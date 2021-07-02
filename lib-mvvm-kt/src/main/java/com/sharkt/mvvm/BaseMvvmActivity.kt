@@ -17,15 +17,12 @@ abstract class BaseMvvmActivity<T : BaseVm, K : ViewBinding> : AppCompatActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e("shark","onCreate");
         val typeArray = (javaClass.genericSuperclass as ParameterizedType?)!!.actualTypeArguments
         vb = createViewBinding(typeArray[1] as Class<K>, layoutInflater)
         if (vb !is K) {
             finish()
             return;
         }
-        Log.e("shark","onCreate1");
-
         setContentView(vb.root)
         vm = ViewModelProvider(this)[typeArray[0] as Class<T>]
         vm.create()
